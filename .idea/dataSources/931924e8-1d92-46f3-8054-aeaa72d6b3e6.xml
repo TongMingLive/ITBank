@@ -1,0 +1,513 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dataSource name="itbank@Tencent">
+  <database-model serializer="dbm" rdbms="MYSQL" format-version="4.2">
+    <root id="1"/>
+    <schema id="2" parent="1" name="H0sxErQb">
+      <Current>1</Current>
+    </schema>
+    <schema id="3" parent="1" name="information_schema"/>
+    <schema id="4" parent="1" name="itbank">
+      <Visible>1</Visible>
+    </schema>
+    <schema id="5" parent="1" name="mysql"/>
+    <schema id="6" parent="1" name="performance_schema"/>
+    <table id="7" parent="4" name="bookstable"/>
+    <table id="8" parent="4" name="booktable"/>
+    <table id="9" parent="4" name="chattable"/>
+    <table id="10" parent="4" name="commenttable"/>
+    <table id="11" parent="4" name="errortable"/>
+    <table id="12" parent="4" name="fanstable"/>
+    <table id="13" parent="4" name="pcommenttable"/>
+    <table id="14" parent="4" name="posttable"/>
+    <table id="15" parent="4" name="posttypetable"/>
+    <table id="16" parent="4" name="registertable"/>
+    <table id="17" parent="4" name="usertable"/>
+    <column id="18" parent="7" name="booksId">
+      <Position>1</Position>
+      <Comment>题库id用于和题目关联</Comment>
+      <DataType>int(100)|0</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="19" parent="7" name="booksName">
+      <Position>2</Position>
+      <Comment>题库名称</Comment>
+      <DataType>varchar(100)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="20" parent="7" name="imgSrc">
+      <Position>3</Position>
+      <Comment>课程图标地址</Comment>
+      <DataType>varchar(100)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="21" parent="7" name="backgroundColor">
+      <Position>4</Position>
+      <DataType>varchar(50)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <key id="22" parent="7" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>booksId</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <column id="23" parent="8" name="bookId">
+      <Position>1</Position>
+      <Comment>题目id用于和评论进行关联</Comment>
+      <DataType>int(100)|0</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="24" parent="8" name="booksId">
+      <Position>2</Position>
+      <Comment>该题目所属的题库</Comment>
+      <DataType>int(100)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="25" parent="8" name="classId">
+      <Position>3</Position>
+      <Comment>该题目所属的章节</Comment>
+      <DataType>int(100)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="26" parent="8" name="bookType">
+      <Position>4</Position>
+      <Comment>题型 0:选择题 1:判断题 2:填空题</Comment>
+      <DataType>int(100)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="27" parent="8" name="bookTitle">
+      <Position>5</Position>
+      <Comment>题目标题</Comment>
+      <DataType>varchar(5000)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="28" parent="8" name="answerA">
+      <Position>6</Position>
+      <Comment>选项A</Comment>
+      <DataType>varchar(1000)|0</DataType>
+    </column>
+    <column id="29" parent="8" name="answerB">
+      <Position>7</Position>
+      <Comment>选项B</Comment>
+      <DataType>varchar(1000)|0</DataType>
+    </column>
+    <column id="30" parent="8" name="answerC">
+      <Position>8</Position>
+      <Comment>选项C</Comment>
+      <DataType>varchar(1000)|0</DataType>
+    </column>
+    <column id="31" parent="8" name="answerD">
+      <Position>9</Position>
+      <Comment>选项D</Comment>
+      <DataType>varchar(1000)|0</DataType>
+    </column>
+    <column id="32" parent="8" name="trueAnswer">
+      <Position>10</Position>
+      <Comment>正确答案</Comment>
+      <DataType>varchar(100)|0</DataType>
+    </column>
+    <column id="33" parent="8" name="bookTrue">
+      <Position>11</Position>
+      <Comment>该题做对次数</Comment>
+      <DataType>int(255)|0</DataType>
+      <NotNull>1</NotNull>
+      <DefaultExpression>&apos;0&apos;</DefaultExpression>
+    </column>
+    <column id="34" parent="8" name="bookFalse">
+      <Position>12</Position>
+      <Comment>该题做错次数</Comment>
+      <DataType>int(255)|0</DataType>
+      <NotNull>1</NotNull>
+      <DefaultExpression>&apos;0&apos;</DefaultExpression>
+    </column>
+    <index id="35" parent="8" name="booktable_bookstable_booksId_fk">
+      <ColNames>booksId</ColNames>
+    </index>
+    <key id="36" parent="8" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>bookId</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <foreign-key id="37" parent="8" name="booktable_bookstable_booksId_fk">
+      <ColNames>booksId</ColNames>
+      <RefSchemaName>itbank</RefSchemaName>
+      <RefTableName>bookstable</RefTableName>
+      <RefColNames>booksId</RefColNames>
+    </foreign-key>
+    <column id="38" parent="9" name="chatId">
+      <Position>1</Position>
+      <Comment>作为主键，无实际意义</Comment>
+      <DataType>int(100)|0</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="39" parent="9" name="userId">
+      <Position>2</Position>
+      <Comment>私聊者userid</Comment>
+      <DataType>int(100)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="40" parent="9" name="cuserId">
+      <Position>3</Position>
+      <Comment>被私聊对象的userid</Comment>
+      <DataType>int(100)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="41" parent="9" name="chatPage">
+      <Position>4</Position>
+      <Comment>私聊内容</Comment>
+      <DataType>varchar(100)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="42" parent="9" name="chatTime">
+      <Position>5</Position>
+      <Comment>留言的时间</Comment>
+      <DataType>timestamp|0</DataType>
+      <NotNull>1</NotNull>
+      <DefaultExpression>CURRENT_TIMESTAMP</DefaultExpression>
+    </column>
+    <column id="43" parent="9" name="chatType">
+      <Position>6</Position>
+      <Comment>读取状态 0未读 1已读</Comment>
+      <DataType>int(100)|0</DataType>
+      <NotNull>1</NotNull>
+      <DefaultExpression>&apos;0&apos;</DefaultExpression>
+    </column>
+    <index id="44" parent="9" name="chattable_usertable_userId_fk">
+      <ColNames>userId</ColNames>
+    </index>
+    <key id="45" parent="9" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>chatId</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <foreign-key id="46" parent="9" name="chattable_usertable_userId_fk">
+      <ColNames>userId</ColNames>
+      <RefSchemaName>itbank</RefSchemaName>
+      <RefTableName>usertable</RefTableName>
+      <RefColNames>userId</RefColNames>
+    </foreign-key>
+    <column id="47" parent="10" name="commentId">
+      <Position>1</Position>
+      <DataType>int(100)|0</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="48" parent="10" name="bookId">
+      <Position>2</Position>
+      <Comment>题目的id</Comment>
+      <DataType>int(100)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="49" parent="10" name="userId">
+      <Position>3</Position>
+      <Comment>评论者的userid</Comment>
+      <DataType>int(100)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="50" parent="10" name="commentPage">
+      <Position>4</Position>
+      <Comment>评论内容</Comment>
+      <DataType>varchar(100)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="51" parent="10" name="commentTime">
+      <Position>5</Position>
+      <Comment>评论时间</Comment>
+      <DataType>timestamp|0</DataType>
+      <NotNull>1</NotNull>
+      <DefaultExpression>CURRENT_TIMESTAMP</DefaultExpression>
+    </column>
+    <index id="52" parent="10" name="commenttable_usertable_userId_fk">
+      <ColNames>userId</ColNames>
+    </index>
+    <key id="53" parent="10" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>commentId</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <foreign-key id="54" parent="10" name="commenttable_usertable_userId_fk">
+      <ColNames>userId</ColNames>
+      <RefSchemaName>itbank</RefSchemaName>
+      <RefTableName>usertable</RefTableName>
+      <RefColNames>userId</RefColNames>
+    </foreign-key>
+    <column id="55" parent="11" name="errorId">
+      <Position>1</Position>
+      <Comment>主键 无实际意义</Comment>
+      <DataType>int(100)|0</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="56" parent="11" name="userId">
+      <Position>2</Position>
+      <Comment>做错该题的用户id</Comment>
+      <DataType>int(100)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="57" parent="11" name="bookId">
+      <Position>3</Position>
+      <Comment>做错的题目的id</Comment>
+      <DataType>int(100)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <index id="58" parent="11" name="errortable_booktable_bookId_fk">
+      <ColNames>bookId</ColNames>
+    </index>
+    <index id="59" parent="11" name="errortable_usertable_userId_fk">
+      <ColNames>userId</ColNames>
+    </index>
+    <key id="60" parent="11" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>errorId</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <foreign-key id="61" parent="11" name="errortable_usertable_userId_fk">
+      <ColNames>userId</ColNames>
+      <RefSchemaName>itbank</RefSchemaName>
+      <RefTableName>usertable</RefTableName>
+      <RefColNames>userId</RefColNames>
+    </foreign-key>
+    <foreign-key id="62" parent="11" name="errortable_booktable_bookId_fk">
+      <ColNames>bookId</ColNames>
+      <RefSchemaName>itbank</RefSchemaName>
+      <RefTableName>booktable</RefTableName>
+      <RefColNames>bookId</RefColNames>
+    </foreign-key>
+    <column id="63" parent="12" name="fansId">
+      <Position>1</Position>
+      <DataType>int(100)|0</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="64" parent="12" name="userId">
+      <Position>2</Position>
+      <Comment>关注者的userid</Comment>
+      <DataType>int(100)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="65" parent="12" name="fuserId">
+      <Position>3</Position>
+      <Comment>被关注者的userid</Comment>
+      <DataType>int(100)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <key id="66" parent="12" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>fansId</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <column id="67" parent="13" name="commentId">
+      <Position>1</Position>
+      <DataType>int(100)|0</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="68" parent="13" name="postId">
+      <Position>2</Position>
+      <Comment>文章id</Comment>
+      <DataType>int(100)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="69" parent="13" name="userId">
+      <Position>3</Position>
+      <Comment>评论者的id</Comment>
+      <DataType>int(100)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="70" parent="13" name="commentPage">
+      <Position>4</Position>
+      <Comment>评论内容</Comment>
+      <DataType>varchar(1000)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="71" parent="13" name="commentTime">
+      <Position>5</Position>
+      <Comment>评论时间</Comment>
+      <DataType>timestamp|0</DataType>
+      <NotNull>1</NotNull>
+      <DefaultExpression>CURRENT_TIMESTAMP</DefaultExpression>
+    </column>
+    <index id="72" parent="13" name="pcommenttable_usertable_userId_fk">
+      <ColNames>userId</ColNames>
+    </index>
+    <key id="73" parent="13" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>commentId</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <foreign-key id="74" parent="13" name="pcommenttable_usertable_userId_fk">
+      <ColNames>userId</ColNames>
+      <RefSchemaName>itbank</RefSchemaName>
+      <RefTableName>usertable</RefTableName>
+      <RefColNames>userId</RefColNames>
+    </foreign-key>
+    <column id="75" parent="14" name="postId">
+      <Position>1</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="76" parent="14" name="userId">
+      <Position>2</Position>
+      <Comment>发表者的id</Comment>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="77" parent="14" name="postTitle">
+      <Position>3</Position>
+      <Comment>文章标题</Comment>
+      <DataType>varchar(100)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="78" parent="14" name="postPage">
+      <Position>4</Position>
+      <Comment>文章内容</Comment>
+      <DataType>varchar(5000)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="79" parent="14" name="postTime">
+      <Position>5</Position>
+      <Comment>发表时间</Comment>
+      <DataType>timestamp|0</DataType>
+      <NotNull>1</NotNull>
+      <DefaultExpression>CURRENT_TIMESTAMP</DefaultExpression>
+    </column>
+    <column id="80" parent="14" name="postGood">
+      <Position>6</Position>
+      <Comment>文章被赞数量</Comment>
+      <DataType>int(100)|0</DataType>
+      <NotNull>1</NotNull>
+      <DefaultExpression>&apos;0&apos;</DefaultExpression>
+    </column>
+    <column id="81" parent="14" name="postBad">
+      <Position>7</Position>
+      <Comment>文章被踩数</Comment>
+      <DataType>int(100)|0</DataType>
+      <NotNull>1</NotNull>
+      <DefaultExpression>&apos;0&apos;</DefaultExpression>
+    </column>
+    <key id="82" parent="14" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>postId</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <column id="83" parent="15" name="pcId">
+      <Position>1</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="84" parent="15" name="postId">
+      <Position>2</Position>
+      <Comment>文章id</Comment>
+      <DataType>varchar(255)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="85" parent="15" name="userId">
+      <Position>3</Position>
+      <Comment>操作人的id</Comment>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="86" parent="15" name="pcType">
+      <Position>4</Position>
+      <Comment>顶或踩 0:踩 1:顶</Comment>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <index id="87" parent="15" name="posttypetable_usertable_userId_fk">
+      <ColNames>userId</ColNames>
+    </index>
+    <key id="88" parent="15" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>pcId</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <foreign-key id="89" parent="15" name="posttypetable_usertable_userId_fk">
+      <ColNames>userId</ColNames>
+      <RefSchemaName>itbank</RefSchemaName>
+      <RefTableName>usertable</RefTableName>
+      <RefColNames>userId</RefColNames>
+    </foreign-key>
+    <column id="90" parent="16" name="Id">
+      <Position>1</Position>
+      <Comment>作为主键无实际意义</Comment>
+      <DataType>int(100)|0</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="91" parent="16" name="userId">
+      <Position>2</Position>
+      <Comment>签到人的userId</Comment>
+      <DataType>int(100)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="92" parent="16" name="registerTime">
+      <Position>3</Position>
+      <Comment>签到的时间</Comment>
+      <DataType>timestamp|0</DataType>
+      <NotNull>1</NotNull>
+      <DefaultExpression>CURRENT_TIMESTAMP</DefaultExpression>
+    </column>
+    <index id="93" parent="16" name="registertable_usertable_userId_fk">
+      <ColNames>userId</ColNames>
+    </index>
+    <key id="94" parent="16" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>Id</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <foreign-key id="95" parent="16" name="registertable_usertable_userId_fk">
+      <ColNames>userId</ColNames>
+      <RefSchemaName>itbank</RefSchemaName>
+      <RefTableName>usertable</RefTableName>
+      <RefColNames>userId</RefColNames>
+    </foreign-key>
+    <column id="96" parent="17" name="userId">
+      <Position>1</Position>
+      <Comment>Id 自动增长</Comment>
+      <DataType>int(100)|0</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="97" parent="17" name="userName">
+      <Position>2</Position>
+      <Comment>用户名</Comment>
+      <DataType>varchar(100)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="98" parent="17" name="userPassword">
+      <Position>3</Position>
+      <Comment>用户密码</Comment>
+      <DataType>varchar(100)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="99" parent="17" name="userSex">
+      <Position>4</Position>
+      <Comment>用户性别 0男 1女</Comment>
+      <DataType>int(100)|0</DataType>
+      <DefaultExpression>&apos;0&apos;</DefaultExpression>
+    </column>
+    <column id="100" parent="17" name="userExperience">
+      <Position>5</Position>
+      <Comment>用户经验</Comment>
+      <DataType>int(100)|0</DataType>
+      <NotNull>1</NotNull>
+      <DefaultExpression>&apos;0&apos;</DefaultExpression>
+    </column>
+    <column id="101" parent="17" name="userType">
+      <Position>6</Position>
+      <Comment>用户类型0:普通1:管理-1超级管理</Comment>
+      <DataType>int(100)|0</DataType>
+      <NotNull>1</NotNull>
+      <DefaultExpression>&apos;0&apos;</DefaultExpression>
+    </column>
+    <key id="102" parent="17" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>userId</ColNames>
+      <Primary>1</Primary>
+    </key>
+  </database-model>
+</dataSource>
